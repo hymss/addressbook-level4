@@ -99,9 +99,10 @@ Format: `help`
 Adds a contact to Contags. +
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [s/SOCIAL_MEDIA_URL] [t/TAG]...`
 
-[TIP]
-A person can have any number of tags (including 0) +
-Social Media Url is an optional field
+****
+* A person can have any number of tags (including 0) +
+* Social Media Url is an optional field
+****
 
 Examples:
 
@@ -256,11 +257,15 @@ particulars of the index gievn.
 
 Format: `sms INDEX text/MESSAGE`
 
+****
+* Message is sent directly to the Singapore extension of the phone number indicated
+* Twilio Account must be set up properly, with correct authentication token. Currently synced to developer's account.
+****
+
 Examples:
 
 * `sms 1 text/hello there!` +
 Sends an sms message to the number of the contact indicated by the index, with the message "hello there!"
-
 // end::smsContact[]
 
 === Mailing a contact: `mail` `m`

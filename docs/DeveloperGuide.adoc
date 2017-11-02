@@ -770,8 +770,7 @@ The use cases here are for you (and other developers) to understand the flow in 
 2.  Contags displays a list of persons.
 3.  User requests to delete a specific person in the list.
 4.  Contags deletes the person.
-+
-Use case ends.
+5.  Use case ends.
 
 *Extensions*
 
@@ -798,8 +797,21 @@ Use case resumes at step 2.
 4. Contags selects contact.
 5. User requests to delete particular field(s).
 6. Contags clears the listed field(s).
+7. Use case ends.
+
+*Extensions*
+
+* 2a. The list is empty.
 +
 Use case ends.
+
+* 3a. The given index is invalid.
++
+
+[none]
+** 3a1. Contags shows an error message.
++
+Use case resumes at step 2.
 
 [discrete]
 === Use case: Add person
@@ -809,8 +821,7 @@ Use case ends.
 1.  User requests to add person in the specified format.
 2.  Contags adds person in the specified format to the list.
 3.  Contags acknowledges that the person has been added to the list.
-+
-Use case ends.
+4.  Use case ends.
 
 *Extensions*
 
@@ -835,12 +846,6 @@ Use case ends.
 [discrete]
 === Use case: Creating contact with same name
 
-*Preconditions* +
-1. Contags contains existing contact with the name to be duplicated.
-
-*Guarantees* +
-1. User will be warned of the existing contact with the same name.
-
 *MSS*
 
 1. User adds contact with the duplicated name.
@@ -848,20 +853,22 @@ Use case ends.
 3. Contags asks if user wants to continue, update existing contact, or end use case.
 4. User requests to continue.
 5. Contags creates new contact.
+6. Use case ends.
 
-* 1a. User does not follow the specified format required for input.
-* 1b. Person with same name is already in the list.
-Error: Contags informs user that input is invalid.
+*Extensions*
+
+* 2a. The list is empty.
++
+Use case ends.
 
 [discrete]
 === Use case: List Contact
 
 *MSS*
 
-1.  User requests to list persons.
-2.  Contags displays a list of persons.
-+
-Use case ends.
+1.  User requests to list persons
+2.  Contags displays a list of persons
+3.  Use case ends.
 
 *Extensions*
 
@@ -877,8 +884,7 @@ Use case ends.
 
 1. User requests to sort list of contacts based on Name, Phone, Email or Address.
 2. Contags sorts the list of contacts and displays the list based on user selection.
-+
-Use case ends.
+3. Use case ends.
 
 *Extensions*
 
@@ -887,66 +893,32 @@ Use case ends.
 +
 Use case ends.
 
-//  tag::SmsContact[]
-
-[discrete]
-=== Use case: SMS Contact
-
-*MSS*
-
-1.  User requests to SMS a specific person in the Contags Application.
-2.  Contags sends SMS to indicated person with message input from user.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. Given Index is not Valid
-+
-** 1a1. Contags informs user that index is invalid, and prompts for another index.
-Use case ends.
-
-//  end::SmsContact[]
-
 [discrete]
 === Use case: Edit Contact
 
 *MSS*
 
-1.  User requests to edit person (index) and specific particular.
-2.  Contags edits the contact particular and displays the updated particulars of the person.
-+
-Use case ends.
+1.  User requests to edit person (index) and specific particular
+2.  Contags edits the contact particular and displays latest change
+3.  Use case ends.
 
 *Extensions*
 
 [none]
+* 1a. The given index is invalid.
 
-* 3a. User requests to update existing contact.
-* 3b. User selects from existing contact(s).
-* 3c. Contags updates the selected contact.
 +
 Use case ends.
-+
-** 3b1. The given index is invalid.
-+
-*** 3b11. Contags displays an error message.
-+
-Use case resumes at step 3b.
+
 
 [discrete]
 === Use case: Clear
-
-*Preconditions*
-1. Contags is not empty.
 
 *MSS*
 
 1. User requests to clear list.
 2. Contags clears list.
-+
-Use case ends.
+3. Use case ends.
 
 [discrete]
 === Use case: Exit
@@ -955,27 +927,24 @@ Use case ends.
 
 1. User requests to exit the program.
 2. Contags closes the program.
-+
-Use case ends.
+3. Use case ends.
 
 // tag::removeTag[]
-
 [discrete]
 === Use case: Remove Tag from all Contacts
 
 *MSS*
 
  1.  User requests to removeTag from all contacts, and includes tag label name.
- 2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays updated particulars of the contacts.
- +
- Use case ends.
+ 2.  Contags searches through all contacts that have been tagged with the same tag, removes the tags from all these contacts and displays latest change
+ 3.  Use case ends.
 
 *Extensions*
 
 [none]
 * 1a. Tag cannot be found.
 +
-Contags informs user that the tag does not exist.
+Contags informs user that the tag does not exist. Use case ends.
 
 // end::removeTag[]
 // tag::smsContact[]
@@ -985,21 +954,21 @@ Contags informs user that the tag does not exist.
 *MSS*
 
  1.  User requests to send an sms message to the number of the contact given by the index, followed by the message that is to be sent.
- 2.  Contags uses the Twilio API to create a message, and send to the contact.
- +
- Use case ends.
+ 2.  Contags uses the Twilio API to create a message, and send to the contact
+ 3.  Use case ends.
 
 *Extensions*
 
 [none]
 * 1a. Number not yet authorized on Twilio.
 +
-Contags informs user that the number is not yet authorized on Twilio.
+Contags informs user that the number is not yet authorized on Twilio. Use case ends.
 
 * 1b. Index given is invalid.
 +
-Contags informs user that the index given is invalid.
+Contags informs user that the index given is invalid. Use case ends.
 // end::smsContact[]
+
 [discrete]
 === Use case: History
 
@@ -1007,18 +976,17 @@ Contags informs user that the index given is invalid.
 
 1. User requests history of commands issued.
 2. Contags shows list of commands in reverse chronological order.
-+
-Use case ends.
+3. Use case ends.
 
 *Extensions*
 
 * 1a. Person Index is invalid.
 +
-** 1a1. Contags informs user that Person Index is invalid.
+Contags informs user that Person Index is invalid. Use case ends.
 
 * 1b. User requests to edit information in an invalid format.
 +
-** 1b1. Contags informs user that the format is invalid, providing the correct format.
+Contags informs user that the format is invalid, providing the correct format. Use case ends.
 
 // tag::findCommand[]
 
@@ -1029,25 +997,24 @@ Use case ends.
 
  1.  User requests to find person by entering full word inside contact name, or any other particular.
  2.  AddressBook finds contact with keyword included in particular, and displays latest change.
- +
- Use case ends.
+ 3.  Use case ends.
 
 *Extensions*
 
 [none]
 * 1a. Contact cannot be found.
 +
-** 1a1. AddressBook informs user that contact cannot be found.
+Contags informs user that the contact cannot be found. Use case ends.
 
+// end::findCommand[]
 [discrete]
 === Use case: Mail Contact
 
 *MSS*
 
-1. User requests to mail a contact by typing in mail command, followed by the index, title and message.
+1. User requests to mail a contact by typing in mail command, followed by the mail, title and message.
 2. Contags opens up desktop mail application and user clicks send.
-+
-Use case ends.
+3. Use case ends.
 
 *Extensions*
 
@@ -1074,23 +1041,18 @@ Use case ends.
 1.  User requests to see entire list of contacts.
 2.  Based on list, user selects contact by providing contact index.
 3.  Contags selects contact with index given.
-+
-Use case ends.
+4.  Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. No contacts in list.
-+
-** 1a1. Contags informs user that there are currently no contacts in the list.
-
-* 2a. The list is empty.
+* 1a. The list is empty.
 +
 Use case ends.
 
-* 3a. User inputs invalid contact index.
+* 2a. User inputs invalid contact index.
 +
-** 3a1. Contags informs user that the input is not a valid contact index.
+Contags informs user that the input is not a valid contact index. Use case ends.
 
 [discrete]
 === Use case: Remove Tag from all Contacts
@@ -1107,7 +1069,7 @@ Use case ends.
 [none]
 * 1a. Tag cannot be found.
 +
-** 1a1. Contags informs user that the tag does not exist.
+Contags informs user that the tag does not exist. Use case ends.
 
 [appendix]
 == Non Functional Requirements

@@ -717,7 +717,7 @@ Priorities: +
 
 |`* *` |user |delete certain fields for my contacts |
 
-|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily |
+|`* *` |user |know if any of my contact information clashes with another one |organise contacts easily
 
 |`* *` |user |delete all tags for a contact |
 
@@ -735,7 +735,7 @@ Priorities: +
 
 |`* *` |user |have tags of different colours |easily identify different tags
 
-|`*` |user| change colors of the tags |customise the tags to my own color groupings
+|`*` |user |change colors of the tags |customise the tags to my own color groupings
 
 |`*` |user with many persons in Contags |sort persons by name |locate a person easily
 

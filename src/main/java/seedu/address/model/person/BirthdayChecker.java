@@ -23,7 +23,8 @@ public class BirthdayChecker implements Predicate<ReadOnlyPerson> {
     * @throws ParseException
     */
 
-    public boolean birthdayList(ReadOnlyPerson person) throws ParseException {
+    //@@author
+    public boolean isBirthday(ReadOnlyPerson person) throws ParseException {
         String birthday = person.getBirthday().toString();
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(birthday);
         Calendar calendar = Calendar.getInstance();
@@ -32,11 +33,12 @@ public class BirthdayChecker implements Predicate<ReadOnlyPerson> {
                 && ((calendar.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance().get(Calendar.DAY_OF_MONTH))));
     }
 
+    //@@author hymss
     @Override
     public boolean test(ReadOnlyPerson person) {
         boolean index = false;
         try {
-            index = birthdayList(person);
+            index = isBirthday(person);
         } catch (ParseException e) {
             e.printStackTrace();
         }
